@@ -91,7 +91,7 @@ To answer these three motions, the company needs to set up a platform with a too
 
 As Microsoft, we offer an product for each of these components
 
-![Platform Engineering components](./assets/intro/plateng3.png)
+![Platform Engineering components](./assets/intro/plateng4.png)
 
 ## Scenario
 
