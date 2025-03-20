@@ -5,7 +5,7 @@ export LOCATION="westeurope"
 RANDOM_NUMBER=$(shuf -i 10000-99999 -n 1)
 export DEVCENTER_NAME="mydevcenter-"$RANDOM_NUMBER
 export RESOURCE_GROUP="rg-plateng-for-devs"
-export SUBSCRIPTION_ID="XXXXXXXX"
+export SUBSCRIPTION_ID="5c705fae-9995-4eb8-8bf9-dcc9cd7759b8"
 export PROJECT_NAME="frontend-project"
 export KV_NAME="kv"$RANDOM_NUMBER
 export REPO_URL="https://github.com/ikhemissi/hands-on-lab-platform-engineering-for-devs.git"
@@ -74,4 +74,3 @@ SECRETID=$(az keyvault secret show --vault-name $KV_NAME --name GHPAT --query id
 
 # add catalog
 az devcenter admin catalog create --git-hub path="/devcenter/ade" branch="main" secret-identifier=$SECRETID uri=$REPO_URL -n "MyCatalog" -d $DEVCENTER_NAME -g $RESOURCE_GROUP -o none
-          
