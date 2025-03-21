@@ -70,6 +70,7 @@ module azureOpenAI './modules/ai/openai.bicep' = {
   name: 'azureOpenAI'
   params: {
     name: 'oai-${resourceSuffixKebabcase}'
+    location: location
     tags: tags
   }
 }

@@ -1,5 +1,5 @@
 param name string
-param location string = resourceGroup().location
+param location string
 param tags object = {}
 
 resource azureOpenAI 'Microsoft.CognitiveServices/accounts@2024-06-01-preview' = {
