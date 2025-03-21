@@ -1,5 +1,5 @@
 param name string
-param location string = resourceGroup().location
+param location string
 param tags object = {}
 
 resource cosmosDbAccount 'Microsoft.DocumentDB/databaseAccounts@2024-05-15' = {

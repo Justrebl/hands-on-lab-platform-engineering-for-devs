@@ -105,6 +105,7 @@ module cosmosDb './modules/storage/cosmos-db.bicep' = {
   name: 'cosmosDb'
   params: {
     name: 'cosmos-${resourceSuffixKebabcase}'
+    location: location
     tags: tags
   }
 }
@@ -132,6 +133,7 @@ module applicationInsights './modules/monitor/application-insights.bicep' = {
   params: {
     name: 'appi-${resourceSuffixKebabcase}'
     tags: tags
+    location: location
     logAnalyticsWorkspaceId: logAnalytics.outputs.id
   }
 }
