@@ -1,5 +1,3 @@
-targetScope = 'subscription'
-
 @minLength(1)
 @maxLength(64)
 @description('Name which is used to generate a short unique hash for each resource')
@@ -52,16 +50,8 @@ var resourceSuffix = [
 var resourceSuffixKebabcase = join(resourceSuffix, '-')
 var resourceSuffixLowercase = join(resourceSuffix, '')
 
-@description('The resource group.')
-resource resourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
-  name: 'rg-${resourceSuffixKebabcase}'
-  location: location
-  tags: tags
-}
-
 module logAnalytics './modules/monitor/log.bicep' = {
   name: 'logAnalytics'
-  scope: resourceGroup
   params: {
     name: 'log-${resourceSuffixKebabcase}'
     tags: tags
@@ -70,7 +60,6 @@ module logAnalytics './modules/monitor/log.bicep' = {
 
 module loadTesting './modules/testing/load-testing.bicep' = {
   name: 'loadTesting'
-  scope: resourceGroup
   params: {
     name: 'lt-${resourceSuffixKebabcase}'
     tags: tags
@@ -79,7 +68,6 @@ module loadTesting './modules/testing/load-testing.bicep' = {
 
 module azureOpenAI './modules/ai/openai.bicep' = {
   name: 'azureOpenAI'
-  scope: resourceGroup
   params: {
     name: 'oai-${resourceSuffixKebabcase}'
     tags: tags
@@ -88,7 +76,6 @@ module azureOpenAI './modules/ai/openai.bicep' = {
 
 module apim './modules/apis/apim.bicep' = {
   name: 'apim'
-  scope: resourceGroup
   params: {
     name: 'apim-${resourceSuffixKebabcase}'
     tags: tags
@@ -97,7 +84,6 @@ module apim './modules/apis/apim.bicep' = {
 
 module storageAccountAudios './modules/storage/storage-account.bicep' = {
   name: 'storageAccountAudios'
-  scope: resourceGroup
   params: {
     name: take('sto${resourceSuffixLowercase}', 24)
     tags: tags
@@ -107,7 +93,6 @@ module storageAccountAudios './modules/storage/storage-account.bicep' = {
 
 module eventGrid './modules/events/event_grid.bicep' = {
   name: 'eventGrid'
-  scope: resourceGroup
   params: {
     name: 'evgt-audio-${resourceSuffixKebabcase}'
     tags: tags
@@ -117,7 +102,6 @@ module eventGrid './modules/events/event_grid.bicep' = {
 
 module cosmosDb './modules/storage/cosmos-db.bicep' = {
   name: 'cosmosDb'
-  scope: resourceGroup
   params: {
     name: 'cosmos-${resourceSuffixKebabcase}'
     tags: tags
@@ -131,7 +115,6 @@ var processorDeploymentPackageContainerName = 'processordeploymentpackage'
 
 module storageAccountFunctions './modules/storage/storage-account.bicep' = {
   name: 'storageAccountFunctions'
-  scope: resourceGroup
   params: {
     location: location
     tags: tags
@@ -145,7 +128,6 @@ module storageAccountFunctions './modules/storage/storage-account.bicep' = {
 
 module applicationInsights './modules/monitor/application-insights.bicep' = {
   name: 'applicationInsights'
-  scope: resourceGroup
   params: {
     name: 'appi-${resourceSuffixKebabcase}'
     tags: tags
@@ -155,7 +137,6 @@ module applicationInsights './modules/monitor/application-insights.bicep' = {
 
 module uploaderFunction './modules/host/function.bicep' = {
   name: 'uploaderFunction'
-  scope: resourceGroup
   params: {
     planName: 'asp-std-${resourceSuffixKebabcase}'
     appName: 'func-std-${resourceSuffixKebabcase}'
@@ -200,7 +181,6 @@ module uploaderFunction './modules/host/function.bicep' = {
 // Durable Azure Functions Flex Consumption
 module processorFunction './modules/host/function.bicep' = {
   name: 'processorFunction'
-  scope: resourceGroup
   params: {
     planName: 'asp-drbl-${resourceSuffixKebabcase}'
     appName: 'func-drbl-${resourceSuffixKebabcase}'
@@ -260,7 +240,6 @@ module processorFunction './modules/host/function.bicep' = {
 
 module keyVault './modules/security/key-vault.bicep' = {
   name: 'keyVault'
-  scope: resourceGroup
   params: {
     name: take('kv-${resourceSuffixKebabcase}', 24)
     tags: tags
@@ -269,7 +248,6 @@ module keyVault './modules/security/key-vault.bicep' = {
 
 module speechToTextService './modules/ai/speech-to-text-service.bicep' = {
   name: 'speechToTextService'
-  scope: resourceGroup
   params: {
     name: 'spch-${resourceSuffixKebabcase}'
     tags: tags
@@ -279,7 +257,6 @@ module speechToTextService './modules/ai/speech-to-text-service.bicep' = {
 
 module roles './modules/security/roles.bicep' = {
   name: 'roles'
-  scope: resourceGroup
   params: {
     cosmosDbAccountName: cosmosDb.outputs.name
     funcStdPrincipalId: uploaderFunction.outputs.principalId
@@ -295,7 +272,6 @@ module roles './modules/security/roles.bicep' = {
   dependsOn: [cosmosDb]
 }
 
-output RESOURCE_GROUP string = resourceGroup.name
 output AZURE_UPLOADER_FUNCTION_APP_NAME string = uploaderFunction.outputs.name
 output AZURE_PROCESSOR_FUNCTION_APP_NAME string = processorFunction.outputs.name
 output AUDIOS_STORAGE_ACCOUNT_CONTAINER_NAME string = storageAccountAudios.outputs.containers[0].name
