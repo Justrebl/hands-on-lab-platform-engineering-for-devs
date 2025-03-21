@@ -118,7 +118,6 @@ var processorDeploymentPackageContainerName = 'processordeploymentpackage'
 module storageAccountFunctions './modules/storage/storage-account.bicep' = {
   name: 'storageAccountFunctions'
   params: {
-    location: location
     tags: tags
     name: take('stfunc${resourceSuffixLowercase}', 24)
     containers: [
