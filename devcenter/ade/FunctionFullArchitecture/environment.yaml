@@ -2,9 +2,9 @@
 name: FunctionFullArchitecture
 version: 1.0.0
 summary: Full Hands on Lab Azure Function Architecture
-description: Deploys a Function App in NodeJS as an API connected to CosmosDB
+description: Deploys a Full Function App Architecture with Azure Functions, CosmosDB, Azure Storage, Azure Key Vault, Azure App Insights and Azure API Management
 runner: Bicep
-templatePath: main.json
+templatePath: main.bicep
 
 parameters:
   - id: name
