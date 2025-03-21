@@ -87,6 +87,7 @@ module storageAccountAudios './modules/storage/storage-account.bicep' = {
   name: 'storageAccountAudios'
   params: {
     name: take('sto${resourceSuffixLowercase}', 24)
+    location: location
     tags: tags
     containers: [{name: 'audios'}]
   }
@@ -97,6 +98,7 @@ module eventGrid './modules/events/event_grid.bicep' = {
   params: {
     name: 'evgt-audio-${resourceSuffixKebabcase}'
     tags: tags
+    location: storageAccountAudios.outputs.location
     storageAccountId: storageAccountAudios.outputs.storageId
   }
 }

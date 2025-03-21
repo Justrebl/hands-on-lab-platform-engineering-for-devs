@@ -61,3 +61,4 @@ output name string = storage.name
 output primaryEndpoints object = storage.properties.primaryEndpoints
 output storageId string = storage.id
 output containers array = containers
+output location string = storage.location
