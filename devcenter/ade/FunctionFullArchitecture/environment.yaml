@@ -21,9 +21,3 @@ parameters:
       - eastus
       - westus3
       - swedencentral
-  - id: location
-    name: location
-    description: "Location to deploy the environment resources"
-    default: "francecentral"
-    type: string
-
