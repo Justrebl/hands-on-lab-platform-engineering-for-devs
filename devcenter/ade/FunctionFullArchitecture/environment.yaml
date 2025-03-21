@@ -14,7 +14,6 @@ parameters:
   - id: location
     name: location
     description: "Location to deploy the environment resources"
-    default: "swedencentral"
     type: string
     required: true
     allowed:
