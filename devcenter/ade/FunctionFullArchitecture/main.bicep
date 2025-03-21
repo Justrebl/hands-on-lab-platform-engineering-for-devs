@@ -119,6 +119,7 @@ module storageAccountFunctions './modules/storage/storage-account.bicep' = {
   name: 'storageAccountFunctions'
   params: {
     tags: tags
+    location:location
     name: take('stfunc${resourceSuffixLowercase}', 24)
     containers: [
       {name: uploaderDeploymentPackageContainerName}
@@ -139,6 +140,7 @@ module applicationInsights './modules/monitor/application-insights.bicep' = {
 module uploaderFunction './modules/host/function.bicep' = {
   name: 'uploaderFunction'
   params: {
+    location:location
     planName: 'asp-std-${resourceSuffixKebabcase}'
     appName: 'func-std-${resourceSuffixKebabcase}'
     applicationInsightsName: applicationInsights.outputs.name
@@ -183,6 +185,7 @@ module uploaderFunction './modules/host/function.bicep' = {
 module processorFunction './modules/host/function.bicep' = {
   name: 'processorFunction'
   params: {
+    location:location
     planName: 'asp-drbl-${resourceSuffixKebabcase}'
     appName: 'func-drbl-${resourceSuffixKebabcase}'
     applicationInsightsName: applicationInsights.outputs.name
