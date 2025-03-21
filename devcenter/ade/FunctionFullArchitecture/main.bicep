@@ -133,7 +133,6 @@ module applicationInsights './modules/monitor/application-insights.bicep' = {
   params: {
     name: 'appi-${resourceSuffixKebabcase}'
     tags: tags
-    location: location
     logAnalyticsWorkspaceId: logAnalytics.outputs.id
   }
 }
