@@ -18,5 +18,7 @@ parameters:
     required: true
     allowed:
       - eastus
+      - eastus2
       - westus3
       - swedencentral
+      - southcentralus
