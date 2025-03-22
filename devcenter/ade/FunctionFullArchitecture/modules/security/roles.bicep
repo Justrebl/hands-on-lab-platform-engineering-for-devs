@@ -80,25 +80,25 @@ resource cosmosDbDataContributor 'Microsoft.DocumentDB/databaseAccounts/sqlRoleD
 }
 
 
-resource userCosmosDbReader 'Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments@2024-05-15' = {
-  parent: cosmosDbAccount
-  name: guid(cosmosDbAccount.id, cosmosDbDataReader.id, userPrincipalId)
-  properties: {
-    roleDefinitionId: cosmosDbDataReader.id
-    principalId: userPrincipalId
-    scope: cosmosDbAccount.id
-  }
-}
+// resource userCosmosDbReader 'Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments@2024-05-15' = {
+//   parent: cosmosDbAccount
+//   name: guid(cosmosDbAccount.id, cosmosDbDataReader.id, userPrincipalId)
+//   properties: {
+//     roleDefinitionId: cosmosDbDataReader.id
+//     principalId: userPrincipalId
+//     scope: cosmosDbAccount.id
+//   }
+// }
 
-resource userCosmosDbContributor 'Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments@2024-05-15' = {
-  parent: cosmosDbAccount
-  name: guid(cosmosDbAccount.id, cosmosDbDataContributor.id, userPrincipalId)
-  properties: {
-    roleDefinitionId: cosmosDbDataContributor.id
-    principalId: userPrincipalId
-    scope: cosmosDbAccount.id
-  }
-}
+// resource userCosmosDbContributor 'Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments@2024-05-15' = {
+//   parent: cosmosDbAccount
+//   name: guid(cosmosDbAccount.id, cosmosDbDataContributor.id, userPrincipalId)
+//   properties: {
+//     roleDefinitionId: cosmosDbDataContributor.id
+//     principalId: userPrincipalId
+//     scope: cosmosDbAccount.id
+//   }
+// }
 
 resource funcStdCosmosDbReader 'Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments@2024-05-15' = {
   parent: cosmosDbAccount
@@ -154,15 +154,15 @@ resource processorStorageAccountAudiosRoleAssignment 'Microsoft.Authorization/ro
   }
 }
 
-resource userStorageAccountAudiosRoleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = {
-  name: guid(storageAccountAudios.id, storageBlobDataOwnerRoleId, userPrincipalId)
-  scope: storageAccountAudios
-  properties: {
-    roleDefinitionId: storageBlobDataOwnerRoleId
-    principalId: userPrincipalId
-    principalType: userPrincipalType
-  }
-}
+// resource userStorageAccountAudiosRoleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = {
+//   name: guid(storageAccountAudios.id, storageBlobDataOwnerRoleId, userPrincipalId)
+//   scope: storageAccountAudios
+//   properties: {
+//     roleDefinitionId: storageBlobDataOwnerRoleId
+//     principalId: userPrincipalId
+//     principalType: userPrincipalType
+//   }
+// }
 
 resource storageFuncDrbl 'Microsoft.Storage/storageAccounts@2022-05-01' existing = {
   name: storageFuncDrblName
