@@ -54,6 +54,7 @@ module logAnalytics './modules/monitor/log.bicep' = {
   name: 'logAnalytics'
   params: {
     name: 'log-${resourceSuffixKebabcase}'
+    location: location
     tags: tags
   }
 }
